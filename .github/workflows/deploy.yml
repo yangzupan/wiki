@@ -1,0 +1,53 @@
+name: deploy
+on:
+  push:
+    branches:
+      # 确保这是你正在使用的分支名称
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # 如果你文档需要 Git 子模块，取消注释下一行
+          # submodules: true
+      # 安装 pnpm
+      - name: Install Pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: true
+          version: 8
+      # 设置 Node.js
+      - name: Settings Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      #安装依赖
+      - name: Install Dependency
+        run: |
+          corepack enable
+          pnpm install --frozen-lockfile
+      # 构建文档
+      - name: Build Docs
+        env:
+          NODE_OPTIONS: --max_old_space_size=8192
+        run: |-
+          pnpm run build
+      # 同步文件到 OSS
+      - name: upload files to OSS
+        uses: fangbinwei/aliyun-oss-website-action@v1
+        with:
+            incremental : false
+            accessKeyId: ${{ secrets.ALI_ACCESS_KEY_ID }}
+            accessKeySecret: ${{ secrets.ALI_ACCESS_KEY_SECRET }}
+            bucket: "panwiki"
+            endpoint: "oss-cn-chengdu.aliyuncs.com" 
+            folder: "src/.vitepress/dist"
