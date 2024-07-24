@@ -20,7 +20,7 @@ export default defineConfig({
 
     // 头部导航
     nav: [
-      // 首页
+      // 首页·
       { text: '首页', link: '/' },
       // 学习
       {
@@ -359,7 +359,7 @@ export default defineConfig({
     },
     // 社交链接
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/yangzupan/wiki' }
+      // { icon: 'github', link: 'https://github.com/yangzupan/wiki' }
     ],
     // 页脚
     footer: {
@@ -367,10 +367,10 @@ export default defineConfig({
       copyright: 'Copyright © 2021 - 2024 <a href="https://www.yangzupan.com/" target="blank"> 杨祖攀 </a> All Rights Reserved.' 
     },
     // 编辑链接
-    editLink: {
-      pattern: 'https://github.com/yangzupan/wiki/edit/main/src/:path',
-      text: '编辑此页面'
-    },
+    // editLink: {
+    //   pattern: 'https://github.com/yangzupan/wiki/edit/main/src/:path',
+    //   text: '编辑此页面'
+    // },
     // 
     lastUpdated: {
       text: '最后更新于',
