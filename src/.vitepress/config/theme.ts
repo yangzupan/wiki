@@ -14,21 +14,21 @@ export const themeConfig: DefaultTheme.Config = {
         level: 'deep',
         label: "目录",
     },
-    socialLinks: [
-        { icon: 'github', link: 'https://github.com/yangzupan/vitepress-theme-pange' }
-    ],
+    // socialLinks: [
+    //     { icon: 'github', link: 'https://github.com/yangzupan/wiki' }
+    // ],
 
     footer: {
         // @ts-ignore
         // 是否显示页脚
-        showFooter: true,
+        showFooter: false,
         // 现实版权信息
         showCopyright: true,
         author: '攀哥',
         // authorLink: '',
         // 建站日期
         startYears: 2023,
-        // showRecord: false,
+        showRecord: false,
         // ICP备案号
         icpRecordCode: '滇ICP备2021000000号',
         // 公安联网备案号
